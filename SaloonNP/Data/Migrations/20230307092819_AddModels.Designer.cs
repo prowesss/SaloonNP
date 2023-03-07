@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SaloonNP.Data;
 
@@ -11,9 +12,11 @@ using SaloonNP.Data;
 namespace SaloonNP.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230307092819_AddModels")]
+    partial class AddModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,7 +275,7 @@ namespace SaloonNP.Data.Migrations
 
                     b.HasIndex("LocationId");
 
-                    b.ToTable("HairStyle", (string)null);
+                    b.ToTable("HairStyle");
                 });
 
             modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Staff_HairStyle", b =>
@@ -287,7 +290,7 @@ namespace SaloonNP.Data.Migrations
 
                     b.HasIndex("HairStyleId");
 
-                    b.ToTable("Staff_HairStyle", (string)null);
+                    b.ToTable("Staff_HairStyle");
                 });
 
             modelBuilder.Entity("SaloonNP.Models.UserManagementModels.Location", b =>
@@ -336,7 +339,7 @@ namespace SaloonNP.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Location", (string)null);
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("SaloonNP.Models.UserManagementModels.Staff", b =>
@@ -377,7 +380,7 @@ namespace SaloonNP.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Staff", (string)null);
+                    b.ToTable("Staff");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
