@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SaloonNP.Data;
 using SaloonNP.Models;
+using System.Data.Entity;
 using System.Diagnostics;
 
 namespace SaloonNP.Controllers
@@ -7,10 +9,12 @@ namespace SaloonNP.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
