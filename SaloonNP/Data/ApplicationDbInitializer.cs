@@ -1,6 +1,7 @@
 ﻿using SaloonNP.Data.Enums;
 using SaloonNP.Models.ServiceManagementModels;
 using SaloonNP.Models.UserManagementModels;
+using System.Data.Entity;
 
 namespace SaloonNP.Data
 {
@@ -11,21 +12,23 @@ namespace SaloonNP.Data
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                if (!context.Staff.Any())
+                {
+                    context.Database.EnsureCreated();
+                    var locations = GenerateInitialLocations();
+                    var staffs = GenerateInitialStaff();
+                    var hairstyles = GenerateInitialHairStyles(staffs, locations);
 
-                context.Database.EnsureCreated();
-                var locations = GenerateInitialLocations();
-                var staffs = GenerateInitialStaff();
-                var hairstyles = GenerateInitialHairStyles(staffs, locations);
-
-                context.Location.Add(locations[0]);
-                context.Location.Add(locations[1]);
-                context.Staff.Add(staffs[0]);
-                context.Staff.Add(staffs[1]);
-                context.Staff.Add(staffs[2]);
-                context.HairStyle.Add(hairstyles[0]);
-                context.HairStyle.Add(hairstyles[1]);
-                context.HairStyle.Add(hairstyles[2]);
-                context.SaveChanges();
+                    context.Location.Add(locations[0]);
+                    context.Location.Add(locations[1]);
+                    context.Staff.Add(staffs[0]);
+                    context.Staff.Add(staffs[1]);
+                    context.Staff.Add(staffs[2]);
+                    context.HairStyle.Add(hairstyles[0]);
+                    context.HairStyle.Add(hairstyles[1]);
+                    context.HairStyle.Add(hairstyles[2]);
+                    context.SaveChanges();
+                }
             }
 
         }
@@ -109,7 +112,7 @@ namespace SaloonNP.Data
                 {
                     Id = Guid.NewGuid(),
                     FullName = "Designer 1",
-                    Description = "This is the Bio of the first actor",
+                    Description = "This is the Bio of the first designer",
                     ProfilePictureURL = "http://dotnethow.net/images/actors/actor-1.jpeg"
 
                 });
@@ -117,7 +120,7 @@ namespace SaloonNP.Data
                 {
                     Id = Guid.NewGuid(),
                     FullName = "Designer 2",
-                    Description = "This is the Bio of the first actor",
+                    Description = "This is the Bio of the second designer",
                     ProfilePictureURL = "http://dotnethow.net/images/actors/actor-2.jpeg"
 
                 });
@@ -125,7 +128,7 @@ namespace SaloonNP.Data
                 {
                     Id = Guid.NewGuid(),
                     FullName = "Designer 3",
-                    Description = "This is the Bio of the first actor",
+                    Description = "This is the Bio of the third designer",
                     ProfilePictureURL = "http://dotnethow.net/images/actors/actor-2.jpeg"
 
                 });
