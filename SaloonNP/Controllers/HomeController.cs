@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SaloonNP.Data;
 using SaloonNP.Models;
-using System.Data.Entity;
 using System.Diagnostics;
 
 namespace SaloonNP.Controllers

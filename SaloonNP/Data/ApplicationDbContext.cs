@@ -20,8 +20,8 @@ namespace SaloonNP.Data
                 am.HairStyleId
             });
 
-            modelBuilder.Entity<Staff_HairStyle>().HasOne(m => m.Staff).WithMany(am => am.Staffs_HairStyles).HasForeignKey(m => m.HairStyleId);
-            modelBuilder.Entity<Staff_HairStyle>().HasOne(m => m.HairStyle).WithMany(am => am.Staffs_HairStyles).HasForeignKey(m => m.StaffId);
+            modelBuilder.Entity<Staff_HairStyle>().HasOne(m => m.Staff).WithMany(am => am.Staffs_HairStyles).HasForeignKey(m => m.StaffId);
+            modelBuilder.Entity<Staff_HairStyle>().HasOne(m => m.HairStyle).WithMany(am => am.Staffs_HairStyles).HasForeignKey(m => m.HairStyleId);
 
 
             base.OnModelCreating(modelBuilder);

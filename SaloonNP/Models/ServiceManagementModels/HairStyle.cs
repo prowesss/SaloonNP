@@ -32,7 +32,6 @@ namespace SaloonNP.Models.ServiceManagementModels
         [ForeignKey("LocationId")]
         public Location Location { get; set; }
 
-        public Staff Staff { get; set; }
 
         public HairStyle()
         {

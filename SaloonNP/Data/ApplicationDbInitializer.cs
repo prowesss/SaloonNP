@@ -1,7 +1,6 @@
 ﻿using SaloonNP.Data.Enums;
 using SaloonNP.Models.ServiceManagementModels;
 using SaloonNP.Models.UserManagementModels;
-using System.Data.Entity;
 
 namespace SaloonNP.Data
 {
