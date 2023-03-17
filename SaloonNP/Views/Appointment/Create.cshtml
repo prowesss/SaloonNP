@@ -1,0 +1,138 @@
+﻿@model SaloonNP.Models.ViewModels.Appointment.AppointmentViewModel
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2>Booking Appointment</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label asp-for="AppointmentDate" class="control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AppointmentDate" class="form-control" />
+                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Hairstyle:</label>
+            <div class="container">
+                <div class="main-row">
+                    @foreach (var hairstyle in Model.HairStyles)
+                    {
+                        <div class="card hairstyle-card" style="width: 18rem; margin: 10px 10px;">
+                            <div class="imageContainer">
+                                <img class="card-img-top hairstyle-image" src="@hairstyle.ImageURL" alt="@hairstyle.Name" data-id="@hairstyle.Id">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@hairstyle.Name</h5>
+                                <p class="card-text">@hairstyle.Description</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <input type="hidden" name="hairstyleId" id="HairstyleId">
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notes)
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Notes, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+        </div>
+
+        <input type="hidden" id="isCancelled" name="isCancelled" value="false">
+
+        <div class="form-group">
+            <label>Staffs:</label>
+            <div class="container">
+                <div class="main-row">
+                    @foreach (var staff in Model.Staffs)
+                    {
+                        <div class="tiles">
+                            <img class="rounded-circle staff-image" src="@staff.ProfilePictureURL" alt="@staff.FullName" data-id="@staff.Id" style="max-width: 100px">
+                        </div>
+                    }
+                    <input type="hidden" name="staffId" id="StaffId">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="LocationId">Location:</label>
+        <div class="col-md-10">
+            <select asp-for="LocationId" asp-items="Model.Locations" class="form-control"></select>
+        </div>
+    </div>
+
+    @Html.Partial("_productSelect", Model)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-outline-primary book">Book</button>
+            @*<input type="submit" value="Create" class="btn btn-default" />*@
+        </div>
+    </div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('.staff-image').click(function () {
+                var staffId = $(this).data('id');
+
+                if (staffId != '') {
+                    $('#StaffId').val(staffId);
+                }
+                $(".staff-image").removeClass("checked");
+                $(this).addClass("checked");
+            });
+
+            $('.hairstyle-image').click(function () {
+                var hairstyleId = $(this).data('id');
+
+                if (hairstyleId != '') {
+                    $('#HairstyleId').val(hairstyleId)
+                }
+                $(".hairstyle-card").removeClass("checked");
+                $(this.parentElement.parentElement).addClass("checked");
+            });
+
+
+            $('.book').click(function () {
+                var staffId = $('#StaffId').val();
+                var appointmentDate = $('#AppointmentDate').val();
+                var notes = $('#Notes').val();
+                var productIds = $('#ProductIds').val();
+                var ids = [];
+                if (productIds){
+                    ids = productIds.split(',');
+                }
+                var hairstyleId = $('#HairstyleId').val();
+                var locationId = $('#LocationId').val();
+
+                var data = {
+                    AppointmentDate: appointmentDate,
+                    Notes: notes,
+                    LocationId: locationId,
+                    HairstyleId: hairstyleId,
+                    ProductIds: ids.join(','),
+                    StaffId: staffId,
+                    IsCancelled: false
+                };
+
+                const sessionData = JSON.stringify(data)
+                // Store the data object in session storage
+                sessionStorage.clear();
+                sessionStorage.setItem('AppointmentBooking', sessionData);
+
+                // Redirect to the controller action
+                window.location.href = '@Url.Action("Index", "Home")';
+            });
+        });
+
+    </script>
+    }

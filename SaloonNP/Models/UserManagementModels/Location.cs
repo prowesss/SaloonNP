@@ -25,6 +25,8 @@ namespace SaloonNP.Models.UserManagementModels
 
         //Relationships
         public List<HairStyle> HairStyles { get; set; }
+        public List<Appointment> Appointments { get; set; }
+        public List<Staff> Staffs { get; set; }
 
         public Location()
         {

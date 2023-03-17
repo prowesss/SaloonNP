@@ -19,6 +19,10 @@ namespace SaloonNP.Models.ViewModels.HairStyle
 
         public Gender? Gender { get; set; }
 
+        public IReadOnlyList<SelectListItem> Locations { get; set; }
+
+        public IReadOnlyList<SelectListItem> Staffs { get; set; }
+
         public List<Guid> StaffIds { get; set; }
 
         public Guid LocationId { get; set; }

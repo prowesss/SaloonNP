@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using SaloonNP.Models.ServiceManagementModels;
 
 namespace SaloonNP.Models.UserManagementModels
@@ -19,6 +20,12 @@ namespace SaloonNP.Models.UserManagementModels
 
         //relationships
         public List<Staff_HairStyle> Staffs_HairStyles { get; set; }
+
+        public List<Appointment> Appointments { get; set; }
+
+        public Guid LocationId { get; set; }
+        [ForeignKey("LocationId")]
+        public Location Location { get; set; }
 
         public Staff()
         {

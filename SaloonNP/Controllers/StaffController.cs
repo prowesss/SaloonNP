@@ -3,6 +3,9 @@ using SaloonNP.Data;
 using SaloonNP.Models.UserManagementModels;
 using Microsoft.EntityFrameworkCore;
 using SaloonNP.Models.ViewModels.Staff;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace SaloonNP.Controllers
 {
@@ -15,6 +18,7 @@ namespace SaloonNP.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
             var staffs = await _context.Staff.Where(x => x.IsDeleted == false).ToListAsync();
@@ -22,28 +26,41 @@ namespace SaloonNP.Controllers
             return View(staffs);
         }
 
+        [Authorize(Roles = "Admin")]
         //Create
         [HttpGet]
         public ActionResult<Staff> Create()
         {
-            return View();
+            var location = _context.Location;
+            var locationSelectList = new List<SelectListItem>();
+            foreach (var item in location)
+            {
+                locationSelectList.Add(new SelectListItem(item.Address, item.Id.ToString()));
+            }
+            StaffViewModel viewModel = new StaffViewModel();
+            viewModel.Locations = locationSelectList;
+            return View(viewModel);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(StaffViewModel createStaff)
         {
+            ModelState.Remove("Locations");
             if (ModelState.IsValid)
             {
                 createStaff.Id = Guid.NewGuid();
+                var location = await _context.Location.FirstOrDefaultAsync(x => x.Id == createStaff.LocationId);
                 Staff newStaff = new Staff()
                 {
-                    Id = createStaff.Id,
+                    
                     ProfilePictureURL = createStaff.ImageUrl,
                     Description = createStaff.Description,
                     FullName = createStaff.Name,
                     CreatedAt = DateTime.Now,
                     CreatedBy = "Prowess",
-                    IsActive = createStaff.IsActive
+                    IsActive = createStaff.IsActive,
+                    Location = location
                 };
                 _context.Staff.Add(newStaff);
                 await _context.SaveChangesAsync();
@@ -51,6 +68,8 @@ namespace SaloonNP.Controllers
             }
             return View(createStaff);
         }
+
+        [Authorize(Roles = "Admin")]
         //Edit
         [HttpGet]
         public async Task<IActionResult> Edit(Guid? id)
@@ -60,12 +79,17 @@ namespace SaloonNP.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff.FindAsync(id);
+            var staff =  await _context.Staff.Include(x => x.Location).FirstOrDefaultAsync(y => y.Id == id);
             if (staff == null)
             {
                 return NotFound();
             }
-
+            var location = _context.Location;
+            var locationSelectList = new List<SelectListItem>();
+            foreach (var item in location)
+            {
+                locationSelectList.Add(new SelectListItem(item.Address, item.Id.ToString()));
+            }
             StaffViewModel editableStaff = new StaffViewModel()
             {
                 Id = staff.Id,
@@ -73,12 +97,15 @@ namespace SaloonNP.Controllers
                 Description = staff.Description,
                 Name = staff.FullName,
                 IsActive = staff.IsActive,
-                IsDeleted = staff.IsDeleted
+                IsDeleted = staff.IsDeleted,
+                LocationId = staff.LocationId,
+                Locations = locationSelectList,
             };
-
+           
             return View(editableStaff);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Edit(Guid id, StaffViewModel staff)
         {
@@ -87,17 +114,21 @@ namespace SaloonNP.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("Locations");
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var location = await _context.Location.FirstOrDefaultAsync(x => x.Id == staff.LocationId);
                     Staff editedStaff = new Staff()
                     {
                         Id = staff.Id,
                         ProfilePictureURL = staff.ImageUrl,
                         Description = staff.Description,
                         FullName = staff.Name,
-                        IsActive = staff.IsActive
+                        IsActive = staff.IsActive,
+                        Location = location
                     };
                     _context.Update(editedStaff);
                     await _context.SaveChangesAsync();
@@ -119,7 +150,7 @@ namespace SaloonNP.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -143,6 +174,7 @@ namespace SaloonNP.Controllers
             return View(deletableStaff);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
@@ -158,6 +190,7 @@ namespace SaloonNP.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Details(Guid id)
         {
