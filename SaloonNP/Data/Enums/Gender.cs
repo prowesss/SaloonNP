@@ -6,4 +6,10 @@
         Female,
         kids
     }
+
+    public enum RoleEnum
+    {
+        Admin,
+        Customer
+    }
 }

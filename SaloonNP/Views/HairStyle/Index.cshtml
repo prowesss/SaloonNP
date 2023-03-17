@@ -49,18 +49,39 @@
 
                         </div>
                     </div>
+                    <div>
+                        <p class="card-text">
+                            <b>Staffs: </b>
+                            <hr />
+                            <div class="row">
+                                @if (item.Staffs_HairStyles != null)
+                                {
+                                    @foreach (var staff in item.Staffs_HairStyles)
+                                    {
+                                        <div class="col text-center">
+                                            <a href="@Url.Action("Details", "Staff", new { id = staff.Staff.Id })">
+                                                <img class="border-info rounded-circle" src="@staff.Staff.ProfilePictureURL" style="max-width: 50px" />
+                                                <br />
+                                                @staff.Staff.FullName
+                                            </a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </p>
+
+                    </div>
+
+
+
                     <div class="col-md-12">
                         <div class="card-footer ">
                             <p class="card-text">
+                                       <a class="btn btn-outline-primary" asp-action="edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>edit </a>
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
-                                <a class="btn btn-success text-white"
-                               asp-controller="Orders"
-                               asp-action="AddItemToShoppingCart"
-                               asp-route-id="@item.Id">
-                                    <i class="bi bi-cart-plus"></i> Book Now
-                                </a>
+                                <a class="btn btn-danger text-white" asp-action="delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>delete </a>
                             </p>
                         </div>
                     </div>

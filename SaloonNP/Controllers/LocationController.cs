@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SaloonNP.Data;
 using SaloonNP.Models.UserManagementModels;
 using SaloonNP.Models.ViewModels.Location;
+using System.Data;
 
 
 namespace SaloonNP.Controllers
@@ -15,19 +17,21 @@ namespace SaloonNP.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
             var locations = await _context.Location.ToListAsync();
             return View(locations);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult<Staff> Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(LocationViewModel addLocation)
         {
@@ -78,6 +82,7 @@ namespace SaloonNP.Controllers
             return View(editableLocation);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Location/Edit/5
         [HttpPost]
 
@@ -124,6 +129,7 @@ namespace SaloonNP.Controllers
             return View(location);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Location/Delete/5
         [HttpGet]
         public async Task<IActionResult> Delete(Guid? id)
@@ -148,6 +154,7 @@ namespace SaloonNP.Controllers
             return View(deletableLocation);
         }
 
+        [Authorize(Roles = "Admin")]
         // POST: Location/Delete/5
         [HttpPost, ActionName("Delete")]
 

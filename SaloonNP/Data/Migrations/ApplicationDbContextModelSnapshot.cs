@@ -224,6 +224,81 @@ namespace SaloonNP.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Appointment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("AppointmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CancelledBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CancelledOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("HairstyleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsCancelled")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("StaffId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HairstyleId");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("StaffId");
+
+                    b.ToTable("Appointment");
+                });
+
+            modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Appointment_Product", b =>
+                {
+                    b.Property<Guid>("AppointmentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("AppointmentId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Appointment_Product");
+                });
+
             modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.HairStyle", b =>
                 {
                     b.Property<Guid>("Id")
@@ -273,6 +348,56 @@ namespace SaloonNP.Data.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("HairStyle");
+                });
+
+            modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double?>("CostPrice")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ExpireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double?>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Staff_HairStyle", b =>
@@ -371,11 +496,16 @@ namespace SaloonNP.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("LocationId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ProfilePictureURL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Staff");
                 });
@@ -431,6 +561,52 @@ namespace SaloonNP.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Appointment", b =>
+                {
+                    b.HasOne("SaloonNP.Models.ServiceManagementModels.HairStyle", "HairStyle")
+                        .WithMany("Appointments")
+                        .HasForeignKey("HairstyleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SaloonNP.Models.UserManagementModels.Location", "Location")
+                        .WithMany("Appointments")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SaloonNP.Models.UserManagementModels.Staff", "Staff")
+                        .WithMany("Appointments")
+                        .HasForeignKey("StaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HairStyle");
+
+                    b.Navigation("Location");
+
+                    b.Navigation("Staff");
+                });
+
+            modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Appointment_Product", b =>
+                {
+                    b.HasOne("SaloonNP.Models.ServiceManagementModels.Appointment", "Appointment")
+                        .WithMany("Appointments_Products")
+                        .HasForeignKey("AppointmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SaloonNP.Models.ServiceManagementModels.Product", "Product")
+                        .WithMany("Appointments_Products")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appointment");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.HairStyle", b =>
                 {
                     b.HasOne("SaloonNP.Models.UserManagementModels.Location", "Location")
@@ -461,18 +637,47 @@ namespace SaloonNP.Data.Migrations
                     b.Navigation("Staff");
                 });
 
+            modelBuilder.Entity("SaloonNP.Models.UserManagementModels.Staff", b =>
+                {
+                    b.HasOne("SaloonNP.Models.UserManagementModels.Location", "Location")
+                        .WithMany("Staffs")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Appointment", b =>
+                {
+                    b.Navigation("Appointments_Products");
+                });
+
             modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.HairStyle", b =>
                 {
+                    b.Navigation("Appointments");
+
                     b.Navigation("Staffs_HairStyles");
+                });
+
+            modelBuilder.Entity("SaloonNP.Models.ServiceManagementModels.Product", b =>
+                {
+                    b.Navigation("Appointments_Products");
                 });
 
             modelBuilder.Entity("SaloonNP.Models.UserManagementModels.Location", b =>
                 {
+                    b.Navigation("Appointments");
+
                     b.Navigation("HairStyles");
+
+                    b.Navigation("Staffs");
                 });
 
             modelBuilder.Entity("SaloonNP.Models.UserManagementModels.Staff", b =>
                 {
+                    b.Navigation("Appointments");
+
                     b.Navigation("Staffs_HairStyles");
                 });
 #pragma warning restore 612, 618
