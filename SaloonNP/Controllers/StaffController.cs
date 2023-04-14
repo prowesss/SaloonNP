@@ -19,7 +19,7 @@ namespace saloonnp.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Index()
+        public async Index()
         {
             var staffs = await _context.Staff.Where(x => x.IsDeleted == false).ToListAsync();
             ViewData["Title"] = "List of Staffs";
