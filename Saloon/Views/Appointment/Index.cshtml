@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Saloon.Models.ServiceManagementModels.Appointment>
+
+<h1>Appointments</h1>
+
+<p>
+    <a asp-action="Create">Create new</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.AppointmentDate)</th>
+            <th>@Html.DisplayNameFor(model => model.HairStyle)</th>
+            <th>@Html.DisplayNameFor(model => model.Appointments_Products)</th>
+            <th>@Html.DisplayNameFor(model => model.Staff)</th>
+            <th>@Html.DisplayNameFor(model => model.Location)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.AppointmentDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.HairStyle.Name)</td>
+                <td>
+                    @foreach (var ap in item.Appointments_Products)
+                    {
+                        @Html.DisplayFor(modelItem => ap.Product.Name)
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Staff.FullName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Location.Address)</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

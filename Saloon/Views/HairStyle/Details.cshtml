@@ -1,0 +1,50 @@
+﻿@model Saloon.Models.ViewModels.HairStyle.HairstyleViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-cut"></i>
+                <span>@Model.Name</span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        @if (!string.IsNullOrEmpty(Model.ImageURL))
+                        {
+                            <img src="@Model.ImageURL" alt="@Model.Name" class="img-thumbnail" />
+                        }
+                    </div>
+                    <div class="col-md-8">
+                        <dl class="row">
+                            <dt class="col-sm-3">Name</dt>
+                            <dd class="col-sm-9">@Model.Name</dd>
+
+                            <dt class="col-sm-3">Description</dt>
+                            <dd class="col-sm-9">@Model.Description</dd>
+
+                            <dt class="col-sm-3">Price</dt>
+                            <dd class="col-sm-9">@Model.Price</dd>
+
+                           
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <a asp-controller="Hairstyle" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i> Edit
+                </a>
+                <a asp-controller="Hairstyle" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i> Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    

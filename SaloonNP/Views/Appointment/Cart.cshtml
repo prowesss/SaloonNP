@@ -1,122 +1,126 @@
 ﻿@model SaloonNP.Models.ViewModels.Appointment.AppointmentViewModel
-<div class="cart-body ">
-    <div class="card">
-        <div class="row">
-            <div class="col-md-8 cart">
-                <div class="title">
-                    <div class="row">
-                        <div class="col"><h4><b>Appointment Booking Summary</b></h4></div>
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="cart-body ">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b>Appointment Booking Summary</b></h4></div>
+                        </div>
                     </div>
-                </div>
-                <div class="row border-top border-bottom">
-                    <div class="row main align-items-center">
-                        <div class="col">
-                            @{
-                                var hairstyle = Model.HairStyles.First(x => x.Id == Model.HairstyleId);
-                            }
-                            <img class="img-fluid" src="@hairstyle.ImageURL" data-id="@Model.HairstyleId">
-                        </div>
-                        <div class="col">
-                            <div class="row text-muted">@hairstyle?.Name</div>
-                            <div class="row">@hairstyle?.Description</div>
-                        </div>
-                        <div class="col"> @hairstyle?.Price </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="row main align-items-center">
-                        <div class="col">
-                            <div class="row text-muted">Booking Date</div>
-                            <div class="row">@Model.AppointmentDate</div>
-                            <input type="hidden" id="AppointmentDate" name="AppointmentDate" value="@Model.AppointmentDate" />
-
-                        </div>
-                        <div class="col">
-                            <div class="row text-muted">Note</div>
-                            <div class="row">@Model.Notes</div>
-                            <input type="hidden" id="Notes" name="Notes" value="@Model.Notes" />
-
-                        </div>
-
-                        @{
-                            var staff = Model.Staffs.First(x => x.Id == Model.StaffId);
-                        }
-
-                        <div class="col">
-                            <div class="row text-muted">Staff</div>
-                            <div class="row"> <img class="rounded-circle staff-image" src="@staff?.ProfilePictureURL" alt="@staff?.FullName" data-id="Model.StaffId" style="max-width: 100px"></div>
-                        </div>
-                        <input type="hidden" id="StaffId" name="StaffId" value="@Model.StaffId" />
-                        <input type="hidden" id="IsCancelled" name="IsCancelled" value="false" />
-                    </div>
-                </div>
-                <div class="row border-top border-bottom">
-                    <div class="row main align-items-center">
-                        @{
-                            var productIds = Model.ProductIds.Split(',');
-                            var productPriceTotal = 0.0;
-                            List<SaloonNP.Models.ServiceManagementModels.Product> products = new List<SaloonNP.Models.ServiceManagementModels.Product>();
-                            foreach (var id in productIds)
-                            {
-                                var product = Model.Products.First(x => x.Id.ToString() == id);
-                                productPriceTotal = productPriceTotal + product.Price.Value;
-                                products.Add(product);
-                            }
-                            
-                        }
-                        @foreach (var product in products)
-                        {
-                            
+                    <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
                             <div class="col">
-                                <div class="row">
-                                    <img class="rounded-circle staff-image" src="@product.ImageURL" style="max-width: 100px">
-                                </div>
-                                <div class="row">
-                                    Name: @product.Name  | Price: @product?.Price
-                                </div>
+                                @{
+                                    var hairstyle = Model.HairStyles.First(x => x.Id == Model.HairstyleId);
+                                }
+                                <img class="img-fluid" src="@hairstyle.ImageURL" data-id="@Model.HairstyleId">
                             </div>
-                        }
-                        <input type="hidden" id="ProductIds" name="ProductIds" value="@Model.ProductIds" />
-                    </div>
-                </div>
-                @*<div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>*@
-            </div>
-            <div class="col-md-4 summary">
-                <div class="title">
-                    <div class="row">
-                        <div class="col"><h4><b>Summary</b></h4></div>
-                    </div>
-                </div>
-                <hr>
-                <p>Hairstyle</p>
-                <div class="row">
-                    <div class="col" style="padding-left:0;">@hairstyle.Name</div>
-                    <div class="col text-right">@hairstyle.Price</div>
-                </div>
-
-                <p>Products</p>
-                @foreach (var product in products)
-                {
-                    <div class="row">
-                        <div class="col" style="padding-left:0;">
-                            Name: @product.Name
-                        </div>
-                        <div class="col text-right">
-                            Price: @product.Price
+                            <div class="col">
+                                <div class="row text-muted">@hairstyle?.Name</div>
+                                <div class="row">@hairstyle?.Description</div>
+                            </div>
+                            <div class="col"> @hairstyle?.Price </div>
                         </div>
                     </div>
-                }
-                @{
-                    var grandTotal = productPriceTotal + hairstyle.Price;
-                }
-                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                    <div class="col">TOTAL PRICE</div>
-                    <div class="col text-right">@grandTotal</div>
-                </div>
+                    <div class="row">
+                        <div class="row main align-items-center">
+                            <div class="col">
+                                <div class="row text-muted">Booking Date</div>
+                                <div class="row">@Model.AppointmentDate</div>
+                                <input type="hidden" id="AppointmentDate" name="AppointmentDate" value="@Model.AppointmentDate" />
 
-                <button class="btn">CHECKOUT</button>
+                            </div>
+                            <div class="col">
+                                <div class="row text-muted">Note</div>
+                                <div class="row">@Model.Notes</div>
+                                <input type="hidden" id="Notes" name="Notes" value="@Model.Notes" />
+
+                            </div>
+
+                            @{
+                                var staff = Model.Staffs.First(x => x.Id == Model.StaffId);
+                            }
+
+                            <div class="col">
+                                <div class="row text-muted">Staff</div>
+                                <div class="row"> <img class="rounded-circle staff-image" src="@staff?.ProfilePictureURL" alt="@staff?.FullName" data-id="Model.StaffId" style="max-width: 100px"></div>
+                            </div>
+                            <input type="hidden" id="StaffId" name="StaffId" value="@Model.StaffId" />
+                            <input type="hidden" id="IsCancelled" name="IsCancelled" value="false" />
+                        </div>
+                    </div>
+                    <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            @{
+                                var productIds = Model.ProductIds.Split(',');
+                                var productPriceTotal = 0.0;
+                                List<SaloonNP.Models.ServiceManagementModels.Product> products = new List<SaloonNP.Models.ServiceManagementModels.Product>();
+                                foreach (var id in productIds)
+                                {
+                                    var product = Model.Products.First(x => x.Id.ToString() == id);
+                                    productPriceTotal = productPriceTotal + product.Price.Value;
+                                    products.Add(product);
+                                }
+
+                            }
+                            @foreach (var product in products)
+                            {
+
+                                <div class="col">
+                                    <div class="row">
+                                        <img class="rounded-circle staff-image" src="@product.ImageURL" style="max-width: 100px">
+                                    </div>
+                                    <div class="row">
+                                        Name: @product.Name  | Price: @product?.Price
+                                    </div>
+                                </div>
+                            }
+                            <input type="hidden" id="ProductIds" name="ProductIds" value="@Model.ProductIds" />
+                        </div>
+                    </div>
+                    @*<div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>*@
+                </div>
+                <div class="col-md-4 summary">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b>Summary</b></h4></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <p>Hairstyle</p>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;">@hairstyle.Name</div>
+                        <div class="col text-right">@hairstyle.Price</div>
+                    </div>
+
+                    <p>Products</p>
+                    @foreach (var product in products)
+                    {
+                        <div class="row">
+                            <div class="col" style="padding-left:0;">
+                                Name: @product.Name
+                            </div>
+                            <div class="col text-right">
+                                Price: @product.Price
+                            </div>
+                        </div>
+                    }
+                    @{
+                        var grandTotal = productPriceTotal + hairstyle.Price;
+                    }
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right">@grandTotal</div>
+                    </div>
+
+                @*    <button class="btn">CHECKOUT</button>*@
+                    <input type="submit" value="CHECKOUT" class="btn btn-default" />
+                </div>
             </div>
+
         </div>
-
     </div>
-</div>
+
+</form>

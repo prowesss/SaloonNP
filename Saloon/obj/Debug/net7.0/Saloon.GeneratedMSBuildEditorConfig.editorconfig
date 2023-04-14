@@ -1,0 +1,189 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Saloon
+build_property.RootNamespace = Saloon
+build_property.ProjectDir = C:\Trimester Projects\Soft703\Saloon\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Trimester Projects\Soft703\Saloon
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Appointment/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcQ2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Appointment/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Appointment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Appointment/UserBooking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcVXNlckJvb2tpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/HairStyle/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFpclN0eWxlXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/HairStyle/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFpclN0eWxlXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/HairStyle/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFpclN0eWxlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/HairStyle/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFpclN0eWxlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/HairStyle/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFpclN0eWxlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Location/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Location/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Location/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Location/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Product/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Product/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Shared/_AdminSidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pblNpZGViYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Shared/_productSelect.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9wcm9kdWN0U2VsZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Staff/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Staff/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Staff/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Staff/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Staff/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhZmZcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Trimester Projects/Soft703/Saloon/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-l6mvv9pt2a

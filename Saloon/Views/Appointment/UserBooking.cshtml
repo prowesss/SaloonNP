@@ -1,0 +1,163 @@
+﻿@using NuGet.Protocol;
+@model Saloon.Models.ViewModels.Appointment.AppointmentViewModel
+
+@*<form asp-action="Create" enctype="multipart/form-data">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="AppointmentDate" class="control-label"></label>
+                        <input asp-for="AppointmentDate" class="form-control" />
+                        <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Notes)
+                        @Html.TextAreaFor(model => model.Notes, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Notes)
+                    </div>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="isCancelled" name="isCancelled">
+                        <label class="form-check-label" for="isCancelled">Cancelled</label>
+                    </div>
+
+                 @*   <div class="form-group">
+                        <label>Products:</label>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    <div>
+                                        <div class="">
+                                            @foreach (var product in Model.Products)
+                                            {
+                                                <div>
+                                                    <img class="d-block w-100 product-image" src="@product.ImageURL" alt="@product.Name" data-id="@product.Id">
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                        <input type="hidden" name="productIds" id="ProductIds" value="@Json.Serialize(Model.ProductIds)" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ProductIds, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @{
+                                    var selectedProductIds = Model.ProductIds ?? new List<Guid>();
+                                    Html.RenderPartial("_ProductsCheckboxList", Model.Products, selectedProductIds);
+                                }
+                                @Html.ValidationMessageFor(model => model.ProductIds, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <label>Staffs:</label>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    <div>
+                                        <div class="">
+                                            @foreach (var staff in Model.Staffs)
+                                            {
+                                                <div>
+                                                    <img class="d-block w-100 staff-image" src="@staff.ProfilePictureURL" alt="@staff.FullName" data-id="@staff.Id">
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="staffId" id="StaffId">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Hairstyle:</label>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8">
+                                    <div>
+                                        <div class="">
+                                            @foreach (var hairstyle in Model.HairStyles)
+                                            {
+                                                <div>
+                                                    <img class="d-block w-100 hairstyle-image" src="@hairstyle.ImageURL" alt="@hairstyle.Name" data-id="@hairstyle.Id">
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="hairstyleId" id="HairstyleId">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LocationId">Location:</label>
+                        <div class="col-md-10">
+                            <select asp-for="LocationId" asp-items="Model.Locations" class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('.product-image').click(function () {
+                var productId = $(this).data('id');
+                var productIds = $('#ProductIds').val();
+
+                if (productIds == '' || productIds == 'null') {
+                    productIds = '[]';
+                }
+
+                var products = JSON.parse(productIds);
+                if (!products?.includes(productId)) {
+                    products.push(productId);
+                }
+
+                $('#ProductIds').val(JSON.stringify(products));
+            });
+
+            $('.staff-image').click(function () {
+                var staffId = $(this).data('id');
+
+                if (staffId != '') {
+                    $('#StaffId').val(staffId)
+                }
+            });
+
+            $('.hairstyle-image').click(function () {
+                var hairstyleId = $(this).data('id');
+
+                if (hairstyleId != '') {
+                    $('#HairstyleId').val(hairstyleId)
+                }
+            });
+
+        });
+    </script>
+}
+
+*@
+
+
+
