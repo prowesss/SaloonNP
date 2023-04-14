@@ -15,7 +15,7 @@ namespace SaloonNP.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public HairstyleController(ApplicationDbContext context)
+        public Hairstylecontroller(ApplicationDbContext context)
         {
             _context = context;
         }
