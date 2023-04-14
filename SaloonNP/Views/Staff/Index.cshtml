@@ -4,6 +4,7 @@
 @inject UserManager<IdentityUser> UserManager
 
 @{
+    // This section sets the title of the page
     ViewData["Title"] = "List of Staffs";
 }
 
@@ -11,6 +12,7 @@
     <div class="col-md-8 offset-md-2">
         @if (SignInManager.IsSignedIn(User))
         {
+            //display a button to create a new product
             <div class="pb-4">
                 <a class="btn btn-primary" asp-action="create">Create </a>
             </div>
@@ -19,12 +21,14 @@
         <table class="table">
             <thead>
                 <tr class="text-center">
+                    // These are the column headers for the table
                     <th>ProfilePictureURL</th>
                     <th>FullName</th>
                     <th>Description</th>
                     <th>Active Status</th>
                     @if (SignInManager.IsSignedIn(User))
                     {
+                        // If the user is signed in, display an Actions column with edit, details, and delete buttons for each staff member
                         <th>Actions</th>
                     }
                 </tr>
@@ -32,23 +36,29 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    // This loop iterates over each staff member in the Model and displays their information in a table row
                     <tr>
                         <td class="align-middle">
+                            // Display the staff member's profile picture
                             <img class="rounded-circle" src="@item.ProfilePictureURL" alt="@item.FullName" style="max-width: 150px" />
                         </td>
                         <td class="align-middle">
+                            // Display the staff member's full name
                             @item.FullName
                         </td>
                         <td class="align-middle">
+                            // Display the staff member's description
                             @item.Description
                         </td>
 
                         <td class="align-middle">
+                            // Display whether the staff member is currently active
                             @item.IsActive
                         </td>
 
                         @if (SignInManager.IsSignedIn(User))
                         {
+                            // If the user is signed in, display edit, details, and delete buttons for the staff member
                             <td class="align-middle">
                                 <a class="btn btn-outline-primary" asp-action="edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>edit </a>
                                 <a class="btn btn-outline-info" asp-action="details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>details </a>
@@ -64,3 +74,4 @@
 
     </div>
 </div>
+
