@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
 
-namespace SaloonNP.Controllers
+namespace saloonnp.Controllers
 {
     public class StaffController : Controller
     {
