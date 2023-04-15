@@ -14,7 +14,7 @@ namespace SaloonNP.Controllers
     public class HairstyleController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        // Reviewer Umesh 20220860 class name must follow naming convention and be same: Change it to HairstyleController
         public Hairstylecontroller(ApplicationDbContext context)
         {
             _context = context;
